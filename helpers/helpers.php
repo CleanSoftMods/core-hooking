@@ -6,7 +6,7 @@ use WebEd\Base\Hook\Support\Facades\FiltersFacade;
 if (!function_exists('add_action')) {
     /**
      * @param string $hook
-     * @param \Closure|string $callback
+     * @param \Closure|string|array|callable $callback
      * @param int $priority
      */
     function add_action($hook, $callback, $priority = 20)
@@ -17,19 +17,20 @@ if (!function_exists('add_action')) {
 
 if (!function_exists('do_action')) {
     /**
-     * Do an action
+     * Do actions
+     * @param string $hookName
      * @param array ...$args
      */
-    function do_action(...$args)
+    function do_action($hookName, ...$args)
     {
-        ActionsFacade::fire(array_shift($args), $args);
+        ActionsFacade::fire($hookName, $args);
     }
 }
 
 if (!function_exists('add_filter')) {
     /**
      * @param string $hook
-     * @param \Closure|string $callback
+     * @param \Closure|string|array|callable $callback
      * @param int $priority
      */
     function add_filter($hook, $callback, $priority = 20)
@@ -40,11 +41,13 @@ if (!function_exists('add_filter')) {
 
 if (!function_exists('do_filter')) {
     /**
+     * Do action then return value
+     * @param string $hookName
      * @param array ...$args
      * @return mixed
      */
-    function do_filter(...$args)
+    function do_filter($hookName, ...$args)
     {
-        return FiltersFacade::fire(array_shift($args), $args);
+        return FiltersFacade::fire($hookName, $args);
     }
 }
