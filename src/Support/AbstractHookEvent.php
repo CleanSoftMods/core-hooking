@@ -28,7 +28,7 @@ abstract class AbstractHookEvent
     public function getListeners()
     {
         /**
-         * Sort by piority
+         * Sort by priority
          */
         uksort($this->listeners, function ($param1, $param2) {
             return strnatcmp($param1, $param2);
