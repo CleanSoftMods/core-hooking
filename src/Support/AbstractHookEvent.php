@@ -13,26 +13,26 @@ abstract class AbstractHookEvent
      * @param string $hook Hook name
      * @param mixed $callback Function to execute
      * @param integer $priority Priority of the action
-     * @author Tor Morten Jensen <tormorten@tormorten.no>
      */
     public function addListener($hook, $callback, $priority = 20)
     {
-        $this->listeners[$priority][$hook] = compact('callback');
+        $this->listeners[$hook][$priority] = compact('callback');
     }
 
     /**
      * Gets a sorted list of all listeners
      * @return array
-     * @author Tor Morten Jensen <tormorten@tormorten.no>
      */
     public function getListeners()
     {
         /**
          * Sort by priority
          */
-        uksort($this->listeners, function ($param1, $param2) {
-            return strnatcmp($param1, $param2);
-        });
+        foreach ($this->listeners as $key => &$listeners) {
+            uksort($listeners, function ($param1, $param2) {
+                return strnatcmp($param1, $param2);
+            });
+        }
 
         return $this->listeners;
     }

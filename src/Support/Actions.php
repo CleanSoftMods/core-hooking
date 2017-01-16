@@ -11,8 +11,8 @@ class Actions extends AbstractHookEvent
     public function fire($action, array $args)
     {
         if ($this->getListeners()) {
-            foreach ($this->getListeners() as $priority => $listeners) {
-                foreach ($listeners as $hook => $arguments) {
+            foreach ($this->getListeners() as $hook => $listeners) {
+                foreach ($listeners as $key => $arguments) {
                     if ($hook === $action) {
                         call_user_func_array($this->getFunction($arguments['callback']), $args);
                     }

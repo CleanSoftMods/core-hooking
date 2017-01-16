@@ -51,3 +51,26 @@ if (!function_exists('do_filter')) {
         return FiltersFacade::fire($hookName, $args);
     }
 }
+
+if (!function_exists('get_hooks')) {
+    /**
+     * @param string $hook
+     * @param \Closure|string|array|callable $callback
+     * @param int $priority
+     */
+    function get_hooks($name = null, $type = 'filter')
+    {
+        if ($type == 'filter') {
+            $listeners = FiltersFacade::getListeners();
+            if (!$name) {
+                return $listeners;
+            }
+            return array_get($listeners, $name);
+        }
+        $listeners = ActionsFacade::getListeners();
+        if (!$name) {
+            return $listeners;
+        }
+        return array_get($listeners, $name);
+    }
+}
