@@ -3,16 +3,14 @@
 class Actions extends AbstractHookEvent
 {
     /**
-     * Filter a value
-     * @param  string $action Name of action
-     * @param  array $args Arguments passed to the filter
-     * @author Tor Morten Jensen <tormorten@tormorten.no>
+     * @param string $action
+     * @param array $args
      */
     public function fire($action, array $args)
     {
         if ($this->getListeners()) {
             foreach ($this->getListeners() as $hook => $listeners) {
-                foreach ($listeners as $key => $arguments) {
+                foreach ($listeners as $arguments) {
                     if ($hook === $action) {
                         call_user_func_array($this->getFunction($arguments['callback']), $args);
                     }

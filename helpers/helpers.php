@@ -54,21 +54,19 @@ if (!function_exists('do_filter')) {
 
 if (!function_exists('get_hooks')) {
     /**
-     * @param string $hook
-     * @param \Closure|string|array|callable $callback
-     * @param int $priority
+     * @param null $name
+     * @param bool $isFilter
+     * @return array|null
      */
-    function get_hooks($name = null, $type = 'filter')
+    function get_hooks($name = null, $isFilter = true)
     {
-        if ($type == 'filter') {
+        if ($isFilter == true) {
             $listeners = FiltersFacade::getListeners();
-            if (!$name) {
-                return $listeners;
-            }
-            return array_get($listeners, $name);
+        } else {
+            $listeners = ActionsFacade::getListeners();
         }
-        $listeners = ActionsFacade::getListeners();
-        if (!$name) {
+
+        if (empty($name)) {
             return $listeners;
         }
         return array_get($listeners, $name);
