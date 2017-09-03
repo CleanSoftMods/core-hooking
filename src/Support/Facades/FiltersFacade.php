@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Hook\Support\Facades;
+<?php namespace CleanSoft\Modules\Core\Hook\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use WebEd\Base\Hook\Support\Filters;
+use CleanSoft\Modules\Core\Hook\Support\Filters;
 
 class FiltersFacade extends Facade
 {

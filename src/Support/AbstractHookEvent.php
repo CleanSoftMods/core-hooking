@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Hook\Support;
+<?php namespace CleanSoft\Modules\Core\Hook\Support;
 
 abstract class AbstractHookEvent
 {
@@ -55,6 +55,9 @@ abstract class AbstractHookEvent
         } elseif ($callback instanceof \Closure) {
             return $callback;
         } elseif (is_array($callback) && sizeof($callback) > 1) {
+            if (is_object($callback[0])) {
+                return $callback;
+            }
             return [app('\\' . $callback[0]), $callback[1]];
         }
         return null;

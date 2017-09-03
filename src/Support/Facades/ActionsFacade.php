@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Hook\Support\Facades;
+<?php namespace CleanSoft\Modules\Core\Hook\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use WebEd\Base\Hook\Support\Actions;
+use CleanSoft\Modules\Core\Hook\Support\Actions;
 
 class ActionsFacade extends Facade
 {

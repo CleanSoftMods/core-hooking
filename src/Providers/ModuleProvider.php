@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Hook\Providers;
+<?php namespace CleanSoft\Modules\Core\Hook\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Hook\Support;
+<?php namespace CleanSoft\Modules\Core\Hook\Support;
 
 class Filters extends AbstractHookEvent
 {
