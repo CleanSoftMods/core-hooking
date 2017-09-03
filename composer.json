@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "WebEd\\Base\\Hook\\": "src"
+            "CleanSoft\\Modules\\Core\\Hook\\": "src"
         },
         "files": [
 
